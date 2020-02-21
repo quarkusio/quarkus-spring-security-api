@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.quarkus</groupId>
+  <artifactId>quarkus-spring-security-api</artifactId>
+  <version>5.1.Alpha1</version>
+
+  <properties>
+    <spring-boot-bom.version>2.1.12.Final</spring-boot-bom.version>
+    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>me.snowdrop</groupId>
+        <artifactId>spring-boot-bom</artifactId>
+        <version>${spring-boot-bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>${maven-shade-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>org.springframework.security:spring-security-core</include>
+                  <include>org.springframework:spring-core</include>
+                  <include>org.springframework:spring-context</include>
+                  <include>org.springframework:spring-web</include>
+                  <include>org.springframework:spring-beans</include>
+                </includes>
+              </artifactSet>
+              <filters>
+                <filter>
+                  <artifact>org.springframework:spring-core</artifact>
+                  <includes>
+                    <!-- Transitive dependencies -->
+                    <include>org/springframework/core/annotation/AliasFor**.class</include>
+                  </includes>
+                </filter>
+                <filter>
+                  <artifact>org.springframework:spring-beans</artifact>
+                  <includes>
+                    <!-- Transitive dependencies -->
+                    <include>org/springframework/beans/factory/annotation/Autowired**.class</include>
+                  </includes>
+                </filter>
+                <filter>
+                  <artifact>org.springframework.security:spring-security-core</artifact>
+                  <includes>
+                    <!-- Used in Quarkus -->
+                    <include>org/springframework/security/access/annotation/Secured**.class</include>
+                    <include>org/springframework/security/access/prepost/PreAuthorize**.class</include>
+                  </includes>
+                </filter>
+                <filter>
+                  <artifact>org.springframework:spring-context</artifact>
+                  <includes>
+                    <!-- Used in Quarkus -->
+                    <include>org/springframework/stereotype/Component**.class</include>
+                    <include>org/springframework/stereotype/Service**.class</include>
+                    <include>org/springframework/context/annotation/Bean**.class</include>
+                    <include>org/springframework/context/annotation/Configuration**.class</include>
+                    <!-- Transitive dependencies -->
+                    <include>org/springframework/stereotype/Controller**.class</include>
+                  </includes>
+                </filter>
+                <filter>
+                  <artifact>org.springframework:spring-web</artifact>
+                  <includes>
+                    <!-- Used in Quarkus -->
+                    <include>org/springframework/web/bind/annotation/GetMapping**.class</include>
+                    <include>org/springframework/web/bind/annotation/RestController**.class</include>
+                    <include>org/springframework/web/bind/annotation/RequestMapping**.class</include>
+                  </includes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
