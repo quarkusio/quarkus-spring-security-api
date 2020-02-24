@@ -70,6 +70,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <createSourcesJar>true</createSourcesJar>
               <artifactSet>
                 <includes>
                   <include>org.springframework.security:spring-security-core</include>
@@ -84,43 +85,43 @@
                   <artifact>org.springframework:spring-core</artifact>
                   <includes>
                     <!-- Transitive dependencies -->
-                    <include>org/springframework/core/annotation/AliasFor**.class</include>
+                    <include>org/springframework/core/annotation/AliasFor**</include>
                   </includes>
                 </filter>
                 <filter>
                   <artifact>org.springframework:spring-beans</artifact>
                   <includes>
                     <!-- Transitive dependencies -->
-                    <include>org/springframework/beans/factory/annotation/Autowired**.class</include>
+                    <include>org/springframework/beans/factory/annotation/Autowired**</include>
                   </includes>
                 </filter>
                 <filter>
                   <artifact>org.springframework.security:spring-security-core</artifact>
                   <includes>
                     <!-- Used in Quarkus -->
-                    <include>org/springframework/security/access/annotation/Secured**.class</include>
-                    <include>org/springframework/security/access/prepost/PreAuthorize**.class</include>
+                    <include>org/springframework/security/access/annotation/Secured**</include>
+                    <include>org/springframework/security/access/prepost/PreAuthorize**</include>
                   </includes>
                 </filter>
                 <filter>
                   <artifact>org.springframework:spring-context</artifact>
                   <includes>
                     <!-- Used in Quarkus -->
-                    <include>org/springframework/stereotype/Component**.class</include>
-                    <include>org/springframework/stereotype/Service**.class</include>
-                    <include>org/springframework/context/annotation/Bean**.class</include>
-                    <include>org/springframework/context/annotation/Configuration**.class</include>
+                    <include>org/springframework/stereotype/Component**</include>
+                    <include>org/springframework/stereotype/Service**</include>
+                    <include>org/springframework/context/annotation/Bean**</include>
+                    <include>org/springframework/context/annotation/Configuration**</include>
                     <!-- Transitive dependencies -->
-                    <include>org/springframework/stereotype/Controller**.class</include>
+                    <include>org/springframework/stereotype/Controller**</include>
                   </includes>
                 </filter>
                 <filter>
                   <artifact>org.springframework:spring-web</artifact>
                   <includes>
                     <!-- Used in Quarkus -->
-                    <include>org/springframework/web/bind/annotation/GetMapping**.class</include>
-                    <include>org/springframework/web/bind/annotation/RestController**.class</include>
-                    <include>org/springframework/web/bind/annotation/RequestMapping**.class</include>
+                    <include>org/springframework/web/bind/annotation/GetMapping**</include>
+                    <include>org/springframework/web/bind/annotation/RestController**</include>
+                    <include>org/springframework/web/bind/annotation/RequestMapping**</include>
                   </includes>
                 </filter>
               </filters>
