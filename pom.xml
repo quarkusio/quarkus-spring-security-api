@@ -8,6 +8,18 @@
   <artifactId>quarkus-spring-security-api</artifactId>
   <version>5.1.Alpha1-SNAPSHOT</version>
 
+  <name>Spring Security dependencies for Quarkus Spring Security extension</name>
+  <description>The minimum dependencies to reduce the footprint of Quarkus applications using the Spring Security extension</description>
+  <url>https://quarkus.io/</url>
+  <developers>
+    <developer>
+      <id>jboss.org</id>
+      <name>JBoss.org Community</name>
+      <organization>JBoss.org</organization>
+      <organizationUrl>http://www.jboss.org</organizationUrl>
+    </developer>
+  </developers>
+
   <properties>
     <spring-boot-bom.version>2.1.12.Final</spring-boot-bom.version>
     <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
@@ -15,6 +27,8 @@
     <maven-source-plugin.version>3.2.0</maven-source-plugin.version>
     <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <licenses>
