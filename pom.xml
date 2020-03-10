@@ -4,7 +4,7 @@
 
     <groupId>io.quarkus</groupId>
     <artifactId>quarkus-spring-security-api</artifactId>
-    <version>5.3.Final</version>
+    <version>5.4.Alpha1-SNAPSHOT</version>
 
     <name>Spring Security dependencies for Quarkus Spring Security extension</name>
     <description>The minimum dependencies to reduce the footprint of Quarkus applications using the Spring Security
@@ -43,7 +43,7 @@
         <url>https://github.com/quarkusio/quarkus-spring-security-api</url>
         <connection>scm:git:git@github.com:quarkusio/quarkus-spring-security-api.git</connection>
         <developerConnection>scm:git:git@github.com:quarkusio/quarkus-spring-security-api.git</developerConnection>
-        <tag>5.3.Final</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <packaging>pom</packaging>
