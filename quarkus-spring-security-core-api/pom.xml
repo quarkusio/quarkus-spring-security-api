@@ -5,12 +5,12 @@
     <parent>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-spring-security-api</artifactId>
-        <version>6.4.SP1-SNAPSHOT</version>
+        <version>7.0-SNAPSHOT</version>
     </parent>
 
     <groupId>io.quarkus</groupId>
     <artifactId>quarkus-spring-security-core-api</artifactId>
-    <version>6.4.SP1-SNAPSHOT</version>
+    <version>7.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
