@@ -4,7 +4,7 @@
 
     <groupId>io.quarkus</groupId>
     <artifactId>quarkus-spring-security-api</artifactId>
-    <version>7.0-SNAPSHOT</version>
+    <version>7.1-SNAPSHOT</version>
 
     <name>Spring Security dependencies for Quarkus Spring Security extension</name>
     <description>The minimum dependencies to reduce the footprint of Quarkus applications using the Spring Security
